@@ -34,7 +34,7 @@ public class Article {
 
     @UpdateTimestamp
     private Timestamp lastModifiedDate;
-    private String productName;
+    private String articleName;
 
     @Column(unique = true)
     private Long ean;
