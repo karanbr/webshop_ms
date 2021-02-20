@@ -13,7 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Article {
+public class ArticleDto {
 
     private UUID articleId;
     private String manufacturer;

@@ -1,25 +1,23 @@
 package de.leuphana.webshop.webshop_ms.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.leuphana.webshop.webshop_ms.model.Article;
+import de.leuphana.webshop.webshop_ms.model.ArticleDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyBoolean;
-import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(ArticleController.class)
-class ArticleControllerTest {
+class ArticleDtoControllerTest {
 
     @Autowired
     MockMvc mockMvc;
@@ -38,8 +36,8 @@ class ArticleControllerTest {
 
     @Test
     void saveNewArticle() throws Exception {
-        Article article = Article.builder().build();
-        String articleJson = objectMapper.writeValueAsString(article);
+        ArticleDto articleDto = ArticleDto.builder().build();
+        String articleJson = objectMapper.writeValueAsString(articleDto);
 
         mockMvc.perform(post("/api/v1/article/")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -49,8 +47,8 @@ class ArticleControllerTest {
 
     @Test
     void updateArticleById() throws Exception {
-        Article article = Article.builder().build();
-        String articleJson = objectMapper.writeValueAsString(article);
+        ArticleDto articleDto = ArticleDto.builder().build();
+        String articleJson = objectMapper.writeValueAsString(articleDto);
 
         mockMvc.perform(put("/api/v1/article/" + UUID.randomUUID().toString())
                 .contentType(MediaType.APPLICATION_JSON)

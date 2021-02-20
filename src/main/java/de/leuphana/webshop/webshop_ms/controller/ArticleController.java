@@ -1,31 +1,33 @@
 package de.leuphana.webshop.webshop_ms.controller;
 
-import de.leuphana.webshop.webshop_ms.model.Article;
+import de.leuphana.webshop.webshop_ms.model.ArticleDto;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
 import java.util.UUID;
 
 @RequestMapping("/api/v1/article")
 @RestController
+@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
 public class ArticleController {
 
     @GetMapping("/{articleId}")
-    public ResponseEntity<Article> getArticleById(@PathVariable("articleId") UUID articleId) {
+    public ResponseEntity<ArticleDto> getArticleById(@PathVariable("articleId") UUID articleId) {
         // todo impl
-        return new ResponseEntity<>(Article.builder().build(), HttpStatus.OK);
+        return new ResponseEntity<>(ArticleDto.builder().build(), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity saveNewArticle(@RequestBody Article article) {
+    public ResponseEntity saveNewArticle(@RequestBody ArticleDto articleDto) {
         // todo impl
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @PutMapping("/{articleId}")
-    public ResponseEntity updateArticleById(@PathVariable("articleId") UUID articleId, @RequestBody Article article){
+    public ResponseEntity updateArticleById(@PathVariable("articleId") UUID articleId, @RequestBody ArticleDto articleDto){
         // todo impl
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
