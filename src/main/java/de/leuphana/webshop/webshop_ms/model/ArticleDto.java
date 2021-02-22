@@ -21,8 +21,7 @@ public class ArticleDto {
 
     @Null
     private UUID articleId;
-    @Null
-    private String manufacturer;
+
     @Null
     private OffsetDateTime createdDate;
     @Null
@@ -30,6 +29,9 @@ public class ArticleDto {
 
     @NotBlank
     private String name;
+
+    @NotBlank
+    private String manufacturer;
 
     @Positive
     @NotNull
