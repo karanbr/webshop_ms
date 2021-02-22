@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -21,13 +22,13 @@ public class ArticleController {
     }
 
     @PostMapping
-    public ResponseEntity saveNewArticle(@RequestBody ArticleDto articleDto) {
+    public ResponseEntity saveNewArticle(@RequestBody @Validated ArticleDto articleDto) {
         // todo impl
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @PutMapping("/{articleId}")
-    public ResponseEntity updateArticleById(@PathVariable("articleId") UUID articleId, @RequestBody ArticleDto articleDto){
+    public ResponseEntity updateArticleById(@PathVariable("articleId") UUID articleId, @RequestBody @Validated ArticleDto articleDto){
         // todo impl
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
